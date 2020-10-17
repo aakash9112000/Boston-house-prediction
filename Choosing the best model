@@ -1,0 +1,19 @@
+best_model = GradientBoostingRegressor(random_state=seed)
+best_model.fit(X_train, Y_train)
+
+# make predictions using the model
+predictions = best_model.predict(X_test)
+print("[INFO] MSE : {}".format(round(mean_squared_error(Y_test, predictions), 3)))
+
+
+# plot between predictions and Y_test
+x_axis = np.array(range(0, predictions.shape[0]))
+plt.plot(x_axis, predictions, linestyle="--", marker="o", alpha=0.7, color='r', label="predictions")
+plt.plot(x_axis, Y_test, linestyle="--", marker="o", alpha=0.7, color='g', label="Y_test")
+plt.xlabel('Row number')
+plt.ylabel('PRICE')
+plt.title('Predictions vs Y_test')
+plt.legend(loc='lower right')
+plt.savefig("predictions_vs_ytest.png")
+plt.clf()
+plt.close()
