@@ -1,0 +1,20 @@
+# visualize the dataset
+import matplotlib.pyplot as plt
+import seaborn as sns
+import random
+import os
+
+sns.set(color_codes=True)
+colors = ["y", "b", "g", "r"]
+
+cols = list(df.columns.values)
+
+if not os.path.exists("plots/univariate/box"):
+    os.makedirs("plots/univariate/box")
+
+# draw a boxplot with vertical orientation
+for i, col in enumerate(cols):
+	sns.boxplot(df[col], color=random.choice(colors), orient="v")
+	plt.savefig("plots/univariate/box/box_" + str(i) + ".png")
+	plt.clf()
+	plt.close()
