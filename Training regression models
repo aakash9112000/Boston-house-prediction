@@ -1,0 +1,24 @@
+X = df.drop("PRICE", axis=1)
+Y = df["PRICE"]
+print(X.shape)
+print(Y.shape)
+
+
+
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
+scaler = MinMaxScaler().fit(X)
+scaled_X = scaler.transform(X)
+
+
+
+from sklearn.model_selection import train_test_split
+
+seed      = 9
+test_size = 0.20
+
+X_train, X_test, Y_train, Y_test = train_test_split(scaled_X, Y, test_size = test_size, random_state = seed)
+
+print(X_train.shape)
+print(X_test.shape)
+print(Y_train.shape)
+print(Y_test.shape)
