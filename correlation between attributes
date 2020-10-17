@@ -1,0 +1,26 @@
+# correlation between attributes
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+print("PEARSON CORRELATION")
+print(df.corr(method="pearson"))
+sns.heatmap(df.corr(method="pearson"))
+plt.savefig("heatmap_pearson.png")
+plt.clf()
+plt.close()
+
+print("SPEARMAN CORRELATION")
+print(df.corr(method="spearman"))
+sns.heatmap(df.corr(method="spearman"))
+plt.savefig("heatmap_spearman.png")
+plt.clf()
+plt.close()
+
+print("KENDALL CORRELATION")
+print(df.corr(method="kendall"))
+sns.heatmap(df.corr(method="kendall"))
+plt.savefig("heatmap_kendall.png")
+plt.clf()
+plt.close()
+
+print(pd.isnull(df).any())
