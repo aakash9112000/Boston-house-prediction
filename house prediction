@@ -1,0 +1,32 @@
+import pandas as pd
+from sklearn.datasets import load_boston
+pd.options.display.float_format = '{:,.2f}'.format
+
+dataset = load_boston()
+
+print("[INFO] keys : {}".format(dataset.keys()))
+
+
+
+print("[INFO] features shape : {}".format(dataset.data.shape))
+print("[INFO] target shape   : {}".format(dataset.target.shape))
+
+print("[INFO] feature names")
+print(dataset.feature_names)
+
+print("[INFO] dataset summary")
+print(dataset.DESCR)
+
+
+df = pd.DataFrame(dataset.data)
+print("[INFO] df type : {}".format(type(df)))
+print("[INFO] df shape: {}".format(df.shape))
+print(df.head())df.columns = dataset.feature_names
+print(df.head())
+
+
+df["PRICE"] = dataset.target
+print(df.head())
+
+print(df.dtypes)
+print(df.describe())
