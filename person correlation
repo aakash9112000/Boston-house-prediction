@@ -1,0 +1,40 @@
+file_report = "boston_housing.txt"
+with open(file_report, "w") as f:
+    f.write("Features shape : {}".format(df.drop("PRICE", axis=1).shape))
+    f.write("\n")
+
+    f.write("Target shape   : {}".format(df["PRICE"].shape))
+    f.write("\n")
+
+    f.write("\nColumn names")
+    f.write("\n")
+    f.write(str(df.columns))
+    f.write("\n")
+
+    f.write("\nStatistical summary")
+    f.write("\n")
+    f.write(str(df.describe()))
+    f.write("\n")
+
+    f.write("\nDatatypes")
+    f.write("\n")
+    f.write(str(df.dtypes))
+    f.write("\n")
+  
+    f.write("\nPEARSON correlation")
+    f.write("\n")
+    f.write(str(df.corr(method="pearson")))
+    f.write("\n")
+
+    f.write("\nSPEARMAN correlation")
+    f.write("\n")
+    f.write(str(df.corr(method="spearman")))
+    f.write("\n")
+ 
+    f.write("\nKENDALL correlation")
+    f.write("\n")
+    f.write(str(df.corr(method="kendall")))
+
+    f.write("\nMissing Values")
+    f.write("\n")
+    f.write(str(pd.isnull(df).any()))
